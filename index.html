@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy Policy – dots</title>
+  <title>dots</title>
   <link rel="icon" type="image/png" href="logo.png">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
   <style>
@@ -46,7 +46,6 @@
       gap: 10px;
     }
 
-    /* outlined circle badge — matches image */
     .logo-badge {
       width: 40px;
       height: 40px;
@@ -99,7 +98,40 @@
       background: #e2e2e2;
     }
 
-    /* ── POLICY TITLE ── */
+    /* ── TAB NAV ── */
+    .tab-nav {
+      background: #ffffff;
+      border-bottom: 1px solid #ececec;
+      display: flex;
+      justify-content: center;
+      padding: 0 20px;
+      gap: 0;
+    }
+
+    .tab-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #999;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 14px 22px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      color: #1a1a1a;
+      border-bottom: 2px solid #1a1a1a;
+    }
+
+    .tab-btn:hover:not(.active) {
+      color: #555;
+    }
+
+    /* ── PAGE HEADER ── */
     .policy-header {
       text-align: center;
       padding: 28px 20px 4px;
@@ -107,34 +139,6 @@
       flex-direction: column;
       align-items: center;
       gap: 6px;
-    }
-
-    .policy-title-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: center;
-    }
-
-    /* small logo in title — same outlined style */
-    .title-logo-badge {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      border: 1.5px solid #1a1a1a;
-      background: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .title-logo-badge span {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 8px;
-      font-weight: 300;
-      color: #1a1a1a;
-      letter-spacing: 0.2px;
     }
 
     .policy-header h1 {
@@ -154,6 +158,14 @@
       max-width: 720px;
       margin: 28px auto;
       padding: 0 20px 60px;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
     }
 
     .section {
@@ -183,6 +195,11 @@
       padding: 2px 7px;
     }
 
+    /* delete page uses a red accent num */
+    .section h2 .num.red {
+      background: #d0392b;
+    }
+
     .section h3 {
       font-size: 13px;
       font-weight: 600;
@@ -208,6 +225,17 @@
       margin-bottom: 4px;
     }
 
+    .section ol {
+      padding-left: 18px;
+      margin-bottom: 8px;
+    }
+
+    .section ol li {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 6px;
+    }
+
     .contact-box {
       background: #f2f2f2;
       border-radius: 10px;
@@ -221,6 +249,48 @@
       color: #1a1a1a;
       font-weight: 600;
       text-decoration: none;
+    }
+
+    /* warning box for delete page */
+    .warning-box {
+      background: #fff5f5;
+      border: 1px solid #f5c6c6;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #7a2020;
+    }
+
+    /* steps styled nicely */
+    .steps-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 8px;
+    }
+
+    .steps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .step-num {
+      min-width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      flex-shrink: 0;
     }
 
     footer {
@@ -308,7 +378,6 @@
   <!-- ── APP HEADER ── -->
   <div class="app-header">
     <div class="logo-area">
-      <!-- outlined circle badge matching image -->
       <div class="logo-badge">
         <span>dots</span>
       </div>
@@ -317,143 +386,200 @@
     <button class="help-btn" onclick="openModal()">?</button>
   </div>
 
-  <!-- ── POLICY TITLE ── -->
-  <div class="policy-header">
-    <div class="policy-title-row">
-      <h1>dots - Privacy Policy</h1>
-    </div>
-    <p>Effective Date: March 27, 2026</p>
+  <!-- ── TAB NAV ── -->
+  <div class="tab-nav">
+    <button class="tab-btn active" id="tab-privacy" onclick="showPage('privacy')">Privacy Policy</button>
+    <button class="tab-btn" id="tab-delete" onclick="showPage('delete')">Delete Account</button>
   </div>
 
-  <!-- ── CONTENT ── -->
-  <div class="container">
-
-    <div class="section">
-      <h2><span class="num">1</span> Introduction</h2>
-      <p>dots is a social discovery application that allows users to create, join, and explore nearby "vibes" and connect with others based on shared interests and location.</p>
-      <p>This Privacy Policy explains how we collect, use, and protect your information when you use the app.</p>
+  <!-- ── PRIVACY POLICY PAGE ── -->
+  <div id="page-privacy" class="page active">
+    <div class="policy-header">
+      <h1>Privacy Policy</h1>
+      <p>Effective Date: March 27, 2026</p>
     </div>
 
-    <div class="section">
-      <h2><span class="num">2</span> Information We Collect</h2>
+    <div class="container">
 
-      <h3>a) Information You Provide</h3>
-      <ul>
-        <li>Phone number (used for authentication via Firebase)</li>
-        <li>Name</li>
-        <li>Profile photo</li>
-        <li>Bio</li>
-        <li>Selected interests ("vibes")</li>
-        <li>Content you create (such as vibes, messages, and interactions)</li>
-      </ul>
-
-      <h3>b) Account & Technical Information</h3>
-      <ul>
-        <li>Firebase User ID (UID)</li>
-        <li>Internal user ID</li>
-        <li>Device-related information (e.g., device type, app version)</li>
-        <li>Log and usage data</li>
-        <li>Analytics data (via Firebase Analytics)</li>
-      </ul>
-
-      <h3>c) Location Information</h3>
-      <p>We collect precise location data when you use the app.</p>
-      <ul>
-        <li>Location is only accessed while the app is in use</li>
-        <li>Used to show nearby vibes and users, and enable location-based interactions</li>
-        <li>Initially, approximate/masked location may be shown</li>
-        <li>In certain interactions (e.g., active vibe participation), more precise location may be visible</li>
-      </ul>
-
-      <h3>d) Communication Data</h3>
-      <ul>
-        <li>Messages exchanged between users</li>
-        <li>Interaction data within vibes</li>
-      </ul>
-
-      <h3>e) Notification Data</h3>
-      <ul>
-        <li>Device push notification tokens (via Firebase Cloud Messaging)</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2><span class="num">3</span> How We Use Your Information</h2>
-      <ul>
-        <li>Create and manage your account</li>
-        <li>Authenticate users via phone number</li>
-        <li>Show nearby vibes and relevant users</li>
-        <li>Enable user interaction and messaging</li>
-        <li>Send notifications (e.g., updates, messages, activity alerts)</li>
-        <li>Improve app performance and user experience</li>
-        <li>Monitor and analyze usage (via analytics)</li>
-        <li>Maintain safety and prevent misuse</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2><span class="num">4</span> How Information Is Shared</h2>
-      <p>We do not sell your personal data.</p>
-
-      <h3>a) With Other Users</h3>
-      <p>Since dots is a social app, your name, profile photo, bio, and vibes may be visible to other users. Your location may be shared depending on the context of a vibe.</p>
-
-      <h3>b) With Service Providers</h3>
-      <p>We use trusted third-party services to operate the app, including:</p>
-      <ul>
-        <li>Firebase (authentication, analytics, notifications)</li>
-        <li>Mapbox (map services)</li>
-        <li>Google Maps (location and map features)</li>
-      </ul>
-
-      <h3>c) Legal Requirements</h3>
-      <p>We may disclose information if required by law or to protect rights, safety, or users.</p>
-    </div>
-
-    <div class="section">
-      <h2><span class="num">5</span> Data Retention</h2>
-      <p>We retain your information:</p>
-      <ul>
-        <li>As long as your account is active</li>
-        <li>As necessary to provide services</li>
-        <li>To comply with legal obligations and resolve disputes</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2><span class="num">6</span> Your Choices and Controls</h2>
-      <ul>
-        <li>You can update your profile information within the app</li>
-        <li>You can control location permissions via device settings</li>
-        <li>You can disable notifications in device settings</li>
-      </ul>
-      <h3>Account Deletion</h3>
-      <p>You can delete your account from within the app. Upon deletion, your personal data will be removed or anonymized, except where retention is required for legal purposes.</p>
-    </div>
-
-    <div class="section">
-      <h2><span class="num">7</span> Security</h2>
-      <p>We use reasonable technical and organizational measures to protect your data. However, no system is completely secure, and we cannot guarantee absolute security.</p>
-    </div>
-
-    <div class="section">
-      <h2><span class="num">8</span> Children's Privacy</h2>
-      <p>dots is not intended for children under the age of 13. We do not knowingly collect personal information from children.</p>
-    </div>
-
-    <div class="section">
-      <h2><span class="num">9</span> Changes to This Policy</h2>
-      <p>We may update this Privacy Policy from time to time. Any changes will be reflected with an updated "Effective Date."</p>
-    </div>
-
-    <div class="section">
-      <h2><span class="num">10</span> Contact Us</h2>
-      <p>If you have any questions or concerns about this Privacy Policy, you can contact us at:</p>
-      <div class="contact-box">
-        <a href="mailto:dotspaceteam@gmail.com">dotspaceteam@gmail.com</a>
+      <div class="section">
+        <h2><span class="num">1</span> Introduction</h2>
+        <p>dots is a social discovery application that allows users to create, join, and explore nearby "vibes" and connect with others based on shared interests and location.</p>
+        <p>This Privacy Policy explains how we collect, use, and protect your information when you use the app.</p>
       </div>
+
+      <div class="section">
+        <h2><span class="num">2</span> Information We Collect</h2>
+
+        <h3>a) Information You Provide</h3>
+        <ul>
+          <li>Phone number (used for authentication via Firebase)</li>
+          <li>Name</li>
+          <li>Profile photo</li>
+          <li>Bio</li>
+          <li>Selected interests ("vibes")</li>
+          <li>Content you create (such as vibes, messages, and interactions)</li>
+        </ul>
+
+        <h3>b) Account & Technical Information</h3>
+        <ul>
+          <li>Firebase User ID (UID)</li>
+          <li>Internal user ID</li>
+          <li>Device-related information (e.g., device type, app version)</li>
+          <li>Log and usage data</li>
+          <li>Analytics data (via Firebase Analytics)</li>
+        </ul>
+
+        <h3>c) Location Information</h3>
+        <p>We collect precise location data when you use the app.</p>
+        <ul>
+          <li>Location is only accessed while the app is in use</li>
+          <li>Used to show nearby vibes and users, and enable location-based interactions</li>
+          <li>Initially, approximate/masked location may be shown</li>
+          <li>In certain interactions (e.g., active vibe participation), more precise location may be visible</li>
+        </ul>
+
+        <h3>d) Communication Data</h3>
+        <ul>
+          <li>Messages exchanged between users</li>
+          <li>Interaction data within vibes</li>
+        </ul>
+
+        <h3>e) Notification Data</h3>
+        <ul>
+          <li>Device push notification tokens (via Firebase Cloud Messaging)</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">3</span> How We Use Your Information</h2>
+        <ul>
+          <li>Create and manage your account</li>
+          <li>Authenticate users via phone number</li>
+          <li>Show nearby vibes and relevant users</li>
+          <li>Enable user interaction and messaging</li>
+          <li>Send notifications (e.g., updates, messages, activity alerts)</li>
+          <li>Improve app performance and user experience</li>
+          <li>Monitor and analyze usage (via analytics)</li>
+          <li>Maintain safety and prevent misuse</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">4</span> How Information Is Shared</h2>
+        <p>We do not sell your personal data.</p>
+
+        <h3>a) With Other Users</h3>
+        <p>Since dots is a social app, your name, profile photo, bio, and vibes may be visible to other users. Your location may be shared depending on the context of a vibe.</p>
+
+        <h3>b) With Service Providers</h3>
+        <p>We use trusted third-party services to operate the app, including:</p>
+        <ul>
+          <li>Firebase (authentication, analytics, notifications)</li>
+          <li>Mapbox (map services)</li>
+          <li>Google Maps (location and map features)</li>
+        </ul>
+
+        <h3>c) Legal Requirements</h3>
+        <p>We may disclose information if required by law or to protect rights, safety, or users.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">5</span> Data Retention</h2>
+        <p>We retain your information:</p>
+        <ul>
+          <li>As long as your account is active</li>
+          <li>As necessary to provide services</li>
+          <li>To comply with legal obligations and resolve disputes</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">6</span> Your Choices and Controls</h2>
+        <ul>
+          <li>You can update your profile information within the app</li>
+          <li>You can control location permissions via device settings</li>
+          <li>You can disable notifications in device settings</li>
+        </ul>
+        <h3>Account Deletion</h3>
+        <p>You can delete your account from within the app. Upon deletion, your personal data will be removed or anonymized, except where retention is required for legal purposes.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">7</span> Security</h2>
+        <p>We use reasonable technical and organizational measures to protect your data. However, no system is completely secure, and we cannot guarantee absolute security.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">8</span> Children's Privacy</h2>
+        <p>dots is not intended for children under the age of 13. We do not knowingly collect personal information from children.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">9</span> Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Any changes will be reflected with an updated "Effective Date."</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num">10</span> Contact Us</h2>
+        <p>If you have any questions or concerns about this Privacy Policy, you can contact us at:</p>
+        <div class="contact-box">
+          <a href="mailto:dotspaceteam@gmail.com">dotspaceteam@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── DELETE ACCOUNT PAGE ── -->
+  <div id="page-delete" class="page">
+    <div class="policy-header">
+      <h1>Delete Your Account</h1>
+      <p>dots – Account Deletion</p>
     </div>
 
+    <div class="container">
+
+      <div class="section">
+        <h2><span class="num red">1</span> Overview</h2>
+        <p>The dots app allows users to delete their account directly from within the app. This page explains the process and what happens to your data after deletion.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num red">2</span> How to Delete Your Account</h2>
+        <ul class="steps-list">
+          <li><span class="step-num">1</span> Open the dots app</li>
+          <li><span class="step-num">2</span> Go to your Profile / Settings</li>
+          <li><span class="step-num">3</span> Tap "Delete Account"</li>
+          <li><span class="step-num">4</span> Confirm the deletion request</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2><span class="num red">3</span> What Happens When You Delete</h2>
+        <ul>
+          <li>Your account profile will be deleted</li>
+          <li>Your personal account data will be removed</li>
+          <li>Your app activity associated with the account will be deleted or anonymized where applicable</li>
+        </ul>
+        <div class="warning-box">
+          This action is permanent and cannot be undone. Make sure you want to proceed before confirming.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2><span class="num red">4</span> Data Retention</h2>
+        <p>Some limited data may be temporarily retained for legal, security, fraud prevention, or technical compliance purposes, if required by applicable law.</p>
+      </div>
+
+      <div class="section">
+        <h2><span class="num red">5</span> Need Help?</h2>
+        <p>If you're unable to delete your account from within the app or need further assistance, contact us at:</p>
+        <div class="contact-box">
+          <a href="mailto:dotspaceteam@gmail.com">dotspaceteam@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <footer>
@@ -474,6 +600,38 @@
   </div>
 
   <script>
+    function showPage(name, pushState = true) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('page-' + name).classList.add('active');
+      document.getElementById('tab-' + name).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (pushState) {
+        const path = name === 'privacy' ? '/privacypolicy' : '/delete';
+        window.history.pushState({ page: name }, '', path);
+      }
+    }
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', (e) => {
+      const name = e.state?.page || getPageFromPath();
+      showPage(name, false);
+    });
+
+    // Detect which page to show on initial load from URL
+    function getPageFromPath() {
+      const path = window.location.pathname;
+      if (path === '/delete') return 'delete';
+      return 'privacy';
+    }
+
+    // On first load, set correct page and URL
+    (function init() {
+      const name = getPageFromPath();
+      showPage(name, true);
+    })();
+
     function openModal() {
       document.getElementById('helpModal').classList.add('active');
     }
