@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>dots – Terms &amp; Conditions</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    @font-face {
+      font-family: 'Mileast';
+      src: url('Mileast-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f9f9f9;
+      color: #1a1a1a;
+      line-height: 1.75;
+    }
+
+    /* ── HEADER ── */
+    .app-header {
+      background: #fff;
+      border-bottom: 1px solid #ececec;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo-area { display: flex; align-items: center; gap: 10px; }
+    .logo-badge {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1.5px solid #1a1a1a; background: transparent;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .logo-badge span {
+      font-family: 'Mileast', sans-serif; font-size: 11px;
+      font-weight: 400; color: #1a1a1a; letter-spacing: 0.2px;
+    }
+    .logo-name {
+      font-family: 'DM Sans', sans-serif; font-size: 20px;
+      font-weight: 700; letter-spacing: -0.5px; color: #1a1a1a;
+    }
+    .help-btn {
+      position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+      width: 30px; height: 30px; border-radius: 50%; background: #f2f2f2;
+      border: none; cursor: pointer; font-size: 15px; font-weight: 700;
+      color: #555; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .help-btn:hover { background: #e2e2e2; }
+
+    /* ── TAB NAV ── */
+    .tab-nav {
+      background: #fff; border-bottom: 1px solid #ececec;
+      display: flex; justify-content: center; padding: 0 20px; gap: 0;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+      color: #999; background: none; border: none; cursor: pointer;
+      padding: 14px 18px; border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s; white-space: nowrap;
+      text-decoration: none; display: inline-flex; align-items: center;
+    }
+    .tab-btn.active { color: #1a1a1a; border-bottom: 2px solid #1a1a1a; }
+    .tab-btn:hover:not(.active) { color: #555; }
+
+    /* ── PAGE HEADER ── */
+    .policy-header {
+      text-align: center; padding: 28px 20px 4px;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    .policy-header h1 { font-size: 22px; font-weight: 700; color: #1a1a1a; }
+    .policy-header p { font-size: 12px; color: #999; margin-top: 2px; }
+
+    /* ── CONTENT ── */
+    .container { max-width: 720px; margin: 28px auto; padding: 0 20px 60px; }
+
+    .section {
+      background: #fff; border-radius: 14px; padding: 24px;
+      margin-bottom: 14px; border: 1px solid #ececec;
+    }
+    .section h2 {
+      font-size: 15px; font-weight: 700; margin-bottom: 12px;
+      color: #111; display: flex; align-items: center; gap: 8px;
+    }
+    .section h2 .num {
+      background: #2c5282; color: #fff; font-size: 11px; font-weight: 700;
+      border-radius: 6px; padding: 2px 7px;
+    }
+    .section h3 { font-size: 13px; font-weight: 600; color: #333; margin-top: 14px; margin-bottom: 6px; }
+    .section p { font-size: 14px; color: #444; margin-bottom: 8px; }
+    .section ul { padding-left: 18px; margin-bottom: 8px; }
+    .section ul li { font-size: 14px; color: #444; margin-bottom: 4px; }
+    .section ol { padding-left: 18px; margin-bottom: 8px; }
+    .section ol li { font-size: 14px; color: #444; margin-bottom: 6px; }
+
+    .contact-box {
+      background: #f2f2f2; border-radius: 10px; padding: 14px 18px;
+      margin-top: 10px; font-size: 14px; color: #333;
+    }
+    .contact-box a { color: #1a1a1a; font-weight: 600; text-decoration: none; }
+
+    .highlight-box {
+      background: #eef3fb; border: 1px solid #c3d4ee; border-radius: 10px;
+      padding: 14px 18px; margin-top: 10px; font-size: 14px; color: #1e3a5f;
+    }
+
+    .warning-box {
+      background: #fff5f5; border: 1px solid #f5c6c6; border-radius: 10px;
+      padding: 14px 18px; margin-top: 10px; font-size: 14px; color: #7a2020;
+    }
+
+    .steps-list { list-style: none; padding-left: 0; margin-bottom: 8px; }
+    .steps-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 14px; color: #444; margin-bottom: 10px;
+    }
+    .step-num {
+      min-width: 24px; height: 24px; border-radius: 50%;
+      background: #2c5282; color: #fff; font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px; flex-shrink: 0;
+    }
+
+    footer { text-align: center; font-size: 12px; color: #bbb; padding: 20px; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.45); z-index: 999;
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #fff; border-radius: 18px; padding: 30px 24px 24px;
+      max-width: 300px; width: 88%; text-align: center;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    .modal-icon { font-size: 32px; margin-bottom: 12px; }
+    .modal-box h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: #1a1a1a; }
+    .modal-box p { font-size: 13.5px; color: #666; margin-bottom: 20px; line-height: 1.6; }
+    .modal-mail-btn {
+      display: inline-block; background: #1a1a1a; color: #fff; text-decoration: none;
+      font-size: 14px; font-weight: 600; padding: 11px 22px; border-radius: 10px;
+      margin-bottom: 12px; width: 100%;
+    }
+    .modal-close {
+      display: block; font-size: 13px; color: #aaa; cursor: pointer;
+      background: none; border: none; width: 100%; padding: 4px 0;
+    }
+    .modal-close:hover { color: #555; }
+  </style>
+</head>
+<body>
+
+  <div class="app-header">
+    <div class="logo-area">
+      <div class="logo-badge"><span>dots</span></div>
+      <span class="logo-name">dots</span>
+    </div>
+    <button class="help-btn" onclick="openModal()">?</button>
+  </div>
+
+  <div class="tab-nav">
+    <a class="tab-btn" href="/privacypolicy">Privacy Policy</a>
+    <a class="tab-btn active" href="/terms">Terms &amp; Conditions</a>
+    <a class="tab-btn" href="/delete">Delete Account</a>
+    <a class="tab-btn" href="/childsafety">Child Safety</a>
+  </div>
+
+  <div class="policy-header">
+    <h1>Terms &amp; Conditions</h1>
+    <p>Effective Date: April 14, 2026</p>
+  </div>
+
+  <div class="container">
+
+    <div class="section">
+      <h2><span class="num">1</span> Acceptance of Terms</h2>
+      <p>By downloading, installing, or using the dots app, you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to these Terms, please do not use the app.</p>
+      <p>During sign-up, you will be asked to explicitly accept these Terms by checking a box. By doing so, you enter into a legally binding agreement with dotSpace ("we," "us," or "our").</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">2</span> About dots</h2>
+      <p>dots is a social discovery app developed by dotSpace that allows users to create and join "vibes" — location-based social moments — and connect with nearby people who share similar interests. The app is currently available in India and is in active beta development on the Google Play Store.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">3</span> Eligibility</h2>
+      <ul>
+        <li>You must be at least <strong>13 years of age</strong> to use dots.</li>
+        <li>By using the app, you confirm that you meet this age requirement.</li>
+        <li>If you are found to be under 13, your account will be permanently removed.</li>
+        <li>dots is currently available for users in <strong>India</strong>. Use of the app outside India is at your own discretion and may not be fully supported.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">4</span> User Accounts</h2>
+      <h3>Creating an Account</h3>
+      <p>To use dots, you must register using your phone number, which is authenticated via Firebase. You are responsible for providing accurate information during sign-up.</p>
+      <h3>Account Security</h3>
+      <p>You are responsible for maintaining the security of your account. Do not share your login credentials with others. You are liable for all activity that occurs under your account.</p>
+      <h3>One Account Per User</h3>
+      <p>Each phone number may only be associated with one active account. Creating multiple accounts to evade bans or misuse the platform is strictly prohibited.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">5</span> Using Vibes</h2>
+      <p>Vibes are the core feature of dots — they are location-based social moments you can create or join. Here's how they work:</p>
+      <h3>Creating a Vibe</h3>
+      <ul class="steps-list">
+        <li><span class="step-num">1</span> Select a vibe card that matches your mood or interest</li>
+        <li><span class="step-num">2</span> Fill in the required details for your vibe</li>
+        <li><span class="step-num">3</span> Swipe to create and publish the vibe</li>
+      </ul>
+      <h3>Joining a Vibe</h3>
+      <p>Users can discover and join nearby vibes by swiping to confirm their participation. Active participation in a vibe may make your location more visible to other participants.</p>
+      <h3>Sharing a Vibe</h3>
+      <p>Vibes have a share option, allowing you to invite others to join. You are responsible for ensuring that any shares are made appropriately and respectfully.</p>
+      <div class="highlight-box">
+        First-time users will be guided through a tutorial on how to create and join vibes. This tutorial can also be revisited anytime from <strong>Settings → Tutorial</strong>.
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">6</span> Content &amp; Ownership</h2>
+      <h3>Your Content</h3>
+      <p>Users retain ownership of any content they create or share on the platform, including messages and vibes. You are solely responsible for the content you share.</p>
+      <h3>License to dotSpace</h3>
+      <p>By using dots, you grant dotSpace a non-exclusive, worldwide, royalty-free license to use, store, display, process, and analyze your content solely for the purpose of operating, maintaining, and improving the app's features and user experience. This license does not transfer ownership of your content.</p>
+      <h3>Content Removal</h3>
+      <p>dotSpace reserves the right to remove any content that violates these Terms, applicable laws, or our community guidelines — without prior notice.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">7</span> Prohibited Conduct</h2>
+      <p>To keep dots safe and enjoyable for everyone, the following behaviors are strictly prohibited:</p>
+      <ul>
+        <li>Harassment, bullying, threats, or abuse of any kind toward other users</li>
+        <li>Sharing offensive, obscene, or inappropriate content</li>
+        <li>Creating fake profiles or impersonating other individuals</li>
+        <li>Spamming, flooding, or repeatedly sending unsolicited messages</li>
+        <li>Using vibes for unlawful, harmful, or deceptive purposes</li>
+        <li>Attempting to exploit, hack, or compromise the platform or other users' accounts</li>
+        <li>Sharing personal information of others without their consent</li>
+        <li>Any behavior that violates applicable Indian laws</li>
+      </ul>
+      <div class="warning-box">
+        If you witness any of the above, please report it immediately via <strong>Settings → Talk to Builders</strong>. Our team reviews all submissions and will take immediate action, including permanent account removal where necessary.
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">8</span> Reporting &amp; Feedback</h2>
+      <p>Currently, dots does not have a direct in-app report button for individual users or content. However, you can raise any concern — including safety issues, inappropriate behavior, or technical problems — through:</p>
+      <div class="highlight-box">
+        <strong>Settings → Talk to the Builders</strong><br>
+        All messages are reviewed promptly by the dotSpace team.
+      </div>
+      <p style="margin-top: 12px;">Once a valid concern is identified, we will take immediate action including restricting or permanently banning the reported account, and escalating to authorities where required.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">9</span> User Responsibility &amp; Liability</h2>
+      <p>Users are solely responsible for their interactions, behavior, and any content they share on the platform. dotSpace does not control or take responsibility for:</p>
+      <ul>
+        <li>User actions, communications, or disputes</li>
+        <li>Outcomes arising from interactions within vibes or chats</li>
+        <li>Any harm, loss, or damage resulting from another user's behavior</li>
+      </ul>
+      <p>You agree to engage with other users respectfully and in full compliance with applicable laws and these Terms.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">10</span> Account Suspension &amp; Termination</h2>
+      <h3>When We May Act</h3>
+      <p>dotSpace reserves the right to suspend or permanently ban any account at its sole discretion if a user engages in:</p>
+      <ul>
+        <li>Inappropriate, abusive, unlawful, or harmful behavior</li>
+        <li>Violation of these Terms</li>
+        <li>Misuse of vibes, chats, or other platform features</li>
+        <li>Any activity that endangers the safety of other users</li>
+      </ul>
+      <h3>Appealing a Ban</h3>
+      <p>If you believe your account was suspended in error, you may submit an appeal through <strong>Settings → Talk to Builders</strong>. Each appeal will be reviewed individually. However, dotSpace reserves the final decision regarding account reinstatement.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">11</span> Disclaimers</h2>
+      <p>dots is provided on an "as is" and "as available" basis. While we strive to provide a reliable experience, dotSpace makes no warranties — express or implied — regarding:</p>
+      <ul>
+        <li>Uninterrupted or error-free access to the app</li>
+        <li>Accuracy or completeness of any content on the platform</li>
+        <li>The behavior or conduct of other users</li>
+      </ul>
+      <p>dotSpace shall not be held liable for any indirect, incidental, or consequential damages arising from your use of the app.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">12</span> Payments</h2>
+      <p>dots is completely free to use. There are currently no paid features, subscriptions, or in-app purchases. Any future changes to this will be communicated clearly through the app and an updated version of these Terms.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">13</span> Changes to These Terms</h2>
+      <p>dotSpace may update these Terms from time to time. When we do, we will update the "Effective Date" at the top of this page. Continued use of the app after changes are posted constitutes your acceptance of the revised Terms.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">14</span> Governing Law &amp; Jurisdiction</h2>
+      <p>These Terms are governed by and interpreted in accordance with the <strong>laws of India</strong>. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the courts located in <strong>Pune, Maharashtra</strong>.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">15</span> Contact Us</h2>
+      <p>For any questions, concerns, or legal inquiries regarding these Terms, please contact us at:</p>
+      <div class="contact-box">
+        <a href="mailto:dotspaceteam@gmail.com">dotspaceteam@gmail.com</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>© 2026 dotSpace. All rights reserved.</footer>
+
+  <div class="modal-overlay" id="helpModal" onclick="handleOverlayClick(event)">
+    <div class="modal-box">
+      <div class="modal-icon">💬</div>
+      <h3>Need Help?</h3>
+      <p>Have questions about our terms or your account? Reach out to us directly.</p>
+      <a class="modal-mail-btn" href="mailto:dotspaceteam@gmail.com">✉️ &nbsp;dotspaceteam@gmail.com</a>
+      <button class="modal-close" onclick="closeModal()">Dismiss</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal() { document.getElementById('helpModal').classList.add('active'); }
+    function closeModal() { document.getElementById('helpModal').classList.remove('active'); }
+    function handleOverlayClick(e) { if (e.target === document.getElementById('helpModal')) closeModal(); }
+  </script>
+</body>
+</html>

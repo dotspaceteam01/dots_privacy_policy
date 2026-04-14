@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>dots – Child Safety</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    @font-face {
+      font-family: 'Mileast';
+      src: url('Mileast-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f9f9f9;
+      color: #1a1a1a;
+      line-height: 1.75;
+    }
+
+    .app-header {
+      background: #fff; border-bottom: 1px solid #ececec;
+      padding: 14px 20px; display: flex; align-items: center;
+      justify-content: center; position: sticky; top: 0; z-index: 100;
+    }
+    .logo-area { display: flex; align-items: center; gap: 10px; }
+    .logo-badge {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1.5px solid #1a1a1a; background: transparent;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .logo-badge span {
+      font-family: 'Mileast', sans-serif; font-size: 11px;
+      font-weight: 400; color: #1a1a1a; letter-spacing: 0.2px;
+    }
+    .logo-name {
+      font-family: 'DM Sans', sans-serif; font-size: 20px;
+      font-weight: 700; letter-spacing: -0.5px; color: #1a1a1a;
+    }
+    .help-btn {
+      position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+      width: 30px; height: 30px; border-radius: 50%; background: #f2f2f2;
+      border: none; cursor: pointer; font-size: 15px; font-weight: 700;
+      color: #555; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .help-btn:hover { background: #e2e2e2; }
+
+    .tab-nav {
+      background: #fff; border-bottom: 1px solid #ececec;
+      display: flex; justify-content: center; padding: 0 20px; gap: 0;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+      color: #999; background: none; border: none; cursor: pointer;
+      padding: 14px 18px; border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s; white-space: nowrap;
+      text-decoration: none; display: inline-flex; align-items: center;
+    }
+    .tab-btn.active { color: #1a1a1a; border-bottom: 2px solid #1a1a1a; }
+    .tab-btn:hover:not(.active) { color: #555; }
+
+    .policy-header {
+      text-align: center; padding: 28px 20px 4px;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    .policy-header h1 { font-size: 22px; font-weight: 700; color: #1a1a1a; }
+    .policy-header p { font-size: 12px; color: #999; margin-top: 2px; }
+
+    .container { max-width: 720px; margin: 28px auto; padding: 0 20px 60px; }
+
+    .section {
+      background: #fff; border-radius: 14px; padding: 24px;
+      margin-bottom: 14px; border: 1px solid #ececec;
+    }
+    .section h2 {
+      font-size: 15px; font-weight: 700; margin-bottom: 12px;
+      color: #111; display: flex; align-items: center; gap: 8px;
+    }
+    .section h2 .num {
+      background: #0e7c6b; color: #fff; font-size: 11px; font-weight: 700;
+      border-radius: 6px; padding: 2px 7px;
+    }
+    .section p { font-size: 14px; color: #444; margin-bottom: 8px; }
+    .section ul { padding-left: 18px; margin-bottom: 8px; }
+    .section ul li { font-size: 14px; color: #444; margin-bottom: 4px; }
+
+    .contact-box {
+      background: #f2f2f2; border-radius: 10px; padding: 14px 18px;
+      margin-top: 10px; font-size: 14px; color: #333;
+    }
+    .contact-box a { color: #1a1a1a; font-weight: 600; text-decoration: none; }
+
+    .info-box {
+      background: #f0faf8; border: 1px solid #b2ddd7; border-radius: 10px;
+      padding: 14px 18px; margin-top: 10px; font-size: 14px; color: #0e4f45;
+    }
+
+    footer { text-align: center; font-size: 12px; color: #bbb; padding: 20px; }
+
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.45); z-index: 999;
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #fff; border-radius: 18px; padding: 30px 24px 24px;
+      max-width: 300px; width: 88%; text-align: center;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    .modal-icon { font-size: 32px; margin-bottom: 12px; }
+    .modal-box h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: #1a1a1a; }
+    .modal-box p { font-size: 13.5px; color: #666; margin-bottom: 20px; line-height: 1.6; }
+    .modal-mail-btn {
+      display: inline-block; background: #1a1a1a; color: #fff; text-decoration: none;
+      font-size: 14px; font-weight: 600; padding: 11px 22px; border-radius: 10px;
+      margin-bottom: 12px; width: 100%;
+    }
+    .modal-close {
+      display: block; font-size: 13px; color: #aaa; cursor: pointer;
+      background: none; border: none; width: 100%; padding: 4px 0;
+    }
+    .modal-close:hover { color: #555; }
+  </style>
+</head>
+<body>
+
+  <div class="app-header">
+    <div class="logo-area">
+      <div class="logo-badge"><span>dots</span></div>
+      <span class="logo-name">dots</span>
+    </div>
+    <button class="help-btn" onclick="openModal()">?</button>
+  </div>
+
+  <div class="tab-nav">
+    <a class="tab-btn" href="/privacypolicy">Privacy Policy</a>
+    <a class="tab-btn" href="/terms">Terms &amp; Conditions</a>
+    <a class="tab-btn" href="/delete">Delete Account</a>
+    <a class="tab-btn active" href="/childsafety">Child Safety</a>
+  </div>
+
+  <div class="policy-header">
+    <h1>Child Safety Standards</h1>
+    <p>Last updated: April 2026</p>
+  </div>
+
+  <div class="container">
+
+    <div class="section">
+      <h2><span class="num">1</span> Zero Tolerance Policy</h2>
+      <p>At dots, we are committed to ensuring a safe environment for all users and have zero tolerance for child sexual abuse and exploitation (CSAE) or child sexual abuse material (CSAM).</p>
+      <p>dots strictly prohibits any content or behavior that involves:</p>
+      <ul>
+        <li>Child sexual abuse material (CSAM)</li>
+        <li>Exploitation of minors</li>
+        <li>Grooming or predatory behavior</li>
+      </ul>
+      <div class="info-box">
+        Any such activity will result in immediate account suspension and reporting to relevant authorities.
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">2</span> User Feedback and Reporting</h2>
+      <p>Currently, users cannot directly report other users or content. However, users can raise concerns, including child safety issues, through the in-app <strong>Settings → Feedback (Talk to the builders)</strong> section. All submissions are reviewed promptly by our team.</p>
+      <p>If a valid concern is identified, our team will take immediate action, including restricting or permanently blocking the reported user account and escalating the matter where necessary.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">3</span> Content Moderation</h2>
+      <p>We actively monitor and moderate user-generated content using:</p>
+      <ul>
+        <li>Automated detection systems</li>
+        <li>Manual review processes</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">4</span> Cooperation with Law Enforcement</h2>
+      <p>dots complies with all applicable child safety laws and works with regional and national law enforcement agencies when required.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">5</span> Prevention Measures</h2>
+      <p>We take steps to prevent misuse of our platform, including:</p>
+      <ul>
+        <li>Account monitoring</li>
+        <li>Restricting suspicious activity</li>
+        <li>Enforcing strict community guidelines</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">6</span> Contact Us</h2>
+      <p>For child safety concerns, contact us at:</p>
+      <div class="contact-box">
+        <a href="mailto:dotspaceteam@gmail.com">dotspaceteam@gmail.com</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>© 2026 dotSpace. All rights reserved.</footer>
+
+  <div class="modal-overlay" id="helpModal" onclick="handleOverlayClick(event)">
+    <div class="modal-box">
+      <div class="modal-icon">💬</div>
+      <h3>Need Help?</h3>
+      <p>Have a child safety concern or question? Please reach out immediately.</p>
+      <a class="modal-mail-btn" href="mailto:dotspaceteam@gmail.com">✉️ &nbsp;dotspaceteam@gmail.com</a>
+      <button class="modal-close" onclick="closeModal()">Dismiss</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal() { document.getElementById('helpModal').classList.add('active'); }
+    function closeModal() { document.getElementById('helpModal').classList.remove('active'); }
+    function handleOverlayClick(e) { if (e.target === document.getElementById('helpModal')) closeModal(); }
+  </script>
+</body>
+</html>
