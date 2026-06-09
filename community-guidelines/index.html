@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>dots – Community Guidelines</title>
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    @font-face {
+      font-family: 'Mileast';
+      src: url('/Mileast-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f9f9f9;
+      color: #1a1a1a;
+      line-height: 1.75;
+    }
+
+    /* ── HEADER ── */
+    .app-header {
+      background: #fff;
+      border-bottom: 1px solid #ececec;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo-area { display: flex; align-items: center; gap: 10px; }
+    .logo-badge {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1.5px solid #1a1a1a; background: transparent;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .logo-badge span {
+      font-family: 'Mileast', sans-serif; font-size: 11px;
+      font-weight: 400; color: #1a1a1a; letter-spacing: 0.2px;
+    }
+    .logo-name {
+      font-family: 'DM Sans', sans-serif; font-size: 20px;
+      font-weight: 700; letter-spacing: -0.5px; color: #1a1a1a;
+    }
+    .help-btn {
+      position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+      width: 30px; height: 30px; border-radius: 50%; background: #f2f2f2;
+      border: none; cursor: pointer; font-size: 15px; font-weight: 700;
+      color: #555; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .help-btn:hover { background: #e2e2e2; }
+
+    /* ── TAB NAV ── */
+    .tab-nav {
+      background: #fff; border-bottom: 1px solid #ececec;
+      display: flex; justify-content: center; padding: 0 20px; gap: 0;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+    }
+    .tab-nav::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+      color: #999; background: none; border: none; cursor: pointer;
+      padding: 14px 18px; border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s; white-space: nowrap;
+      text-decoration: none; display: inline-flex; align-items: center;
+    }
+    .tab-btn.active { color: #1a1a1a; border-bottom: 2px solid #1a1a1a; }
+    .tab-btn:hover:not(.active) { color: #555; }
+
+    /* ── PAGE HEADER ── */
+    .policy-header {
+      text-align: center; padding: 28px 20px 4px;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    .policy-header h1 { font-size: 22px; font-weight: 700; color: #1a1a1a; }
+    .policy-header p { font-size: 12px; color: #999; margin-top: 2px; }
+
+    /* ── INTRO BANNER ── */
+    .intro-banner {
+      max-width: 720px; margin: 20px auto 0; padding: 0 20px;
+    }
+    .intro-inner {
+      background: #1a1a1a; border-radius: 14px; padding: 20px 24px;
+      color: #fff;
+    }
+    .intro-inner p {
+      font-size: 14px; line-height: 1.7; color: #ccc;
+    }
+    .intro-inner strong { color: #fff; }
+
+    /* ── CONTENT ── */
+    .container { max-width: 720px; margin: 20px auto; padding: 0 20px 60px; }
+
+    .section {
+      background: #fff; border-radius: 14px; padding: 24px;
+      margin-bottom: 14px; border: 1px solid #ececec;
+    }
+    .section h2 {
+      font-size: 15px; font-weight: 700; margin-bottom: 12px;
+      color: #111; display: flex; align-items: center; gap: 8px;
+    }
+    .section h2 .icon {
+      font-size: 16px; line-height: 1;
+    }
+    .section p { font-size: 14px; color: #444; margin-bottom: 8px; line-height: 1.7; }
+    .section ul { padding-left: 18px; margin-bottom: 8px; }
+    .section ul li { font-size: 14px; color: #444; margin-bottom: 6px; line-height: 1.65; }
+    .section ul li strong { font-weight: 600; color: #1a1a1a; }
+
+    /* allowed / not allowed tags */
+    .rule-row {
+      display: flex; gap: 10px; align-items: flex-start;
+      padding: 8px 0; border-bottom: 1px solid #f2f2f2;
+    }
+    .rule-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .rule-tag {
+      font-size: 11px; font-weight: 700; padding: 3px 8px;
+      border-radius: 6px; white-space: nowrap; margin-top: 1px; flex-shrink: 0;
+    }
+    .tag-no { background: #fee2e2; color: #991b1b; }
+    .tag-yes { background: #dcfce7; color: #166534; }
+    .rule-text { font-size: 14px; color: #444; line-height: 1.6; }
+    .rule-text strong { font-weight: 600; color: #1a1a1a; }
+
+    /* enforcement box */
+    .enforce-box {
+      background: #f9f9f9; border: 1px solid #ececec;
+      border-radius: 10px; padding: 14px 18px; margin-top: 10px;
+    }
+    .enforce-box p { font-size: 13.5px; color: #555; margin-bottom: 4px; }
+    .enforce-box p:last-child { margin-bottom: 0; }
+
+    .contact-box {
+      background: #f2f2f2; border-radius: 10px; padding: 14px 18px;
+      margin-top: 10px; font-size: 14px; color: #333;
+    }
+    .contact-box a { color: #1a1a1a; font-weight: 600; text-decoration: none; }
+
+    footer { text-align: center; font-size: 12px; color: #bbb; padding: 20px; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.45); z-index: 999;
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #fff; border-radius: 18px; padding: 30px 24px 24px;
+      max-width: 300px; width: 88%; text-align: center;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    .modal-icon { font-size: 32px; margin-bottom: 12px; }
+    .modal-box h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: #1a1a1a; }
+    .modal-box p { font-size: 13.5px; color: #666; margin-bottom: 20px; line-height: 1.6; }
+    .modal-mail-btn {
+      display: inline-block; background: #1a1a1a; color: #fff; text-decoration: none;
+      font-size: 14px; font-weight: 600; padding: 11px 22px; border-radius: 10px;
+      margin-bottom: 12px; width: 100%;
+    }
+    .modal-close {
+      display: block; font-size: 13px; color: #aaa; cursor: pointer;
+      background: none; border: none; width: 100%; padding: 4px 0;
+    }
+    .modal-close:hover { color: #555; }
+  </style>
+</head>
+<body>
+
+  <div class="app-header">
+    <div class="logo-area">
+      <div class="logo-badge"><span>dots</span></div>
+      <span class="logo-name">dots</span>
+    </div>
+    <button class="help-btn" onclick="openModal()">?</button>
+  </div>
+
+  <div class="tab-nav">
+    <a class="tab-btn" href="/privacypolicy">Privacy Policy</a>
+    <a class="tab-btn" href="/terms-conditions">Terms &amp; Conditions</a>
+    <a class="tab-btn active" href="/community-guidelines">Community Guidelines</a>
+    <a class="tab-btn" href="/delete">Delete Account</a>
+    <a class="tab-btn" href="/childsafety">Child Safety</a>
+  </div>
+
+  <div class="policy-header">
+    <h1>Community Guidelines</h1>
+    <p>Effective Date: March 27, 2026</p>
+  </div>
+
+  <div class="intro-banner">
+    <div class="intro-inner">
+      <p>dots is built on one idea — <strong>real people finding their people.</strong> These guidelines exist to make sure every vibe, every chat, and every connection on dots feels safe, genuine, and worth showing up for. When you use dots, you agree to these standards.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="section">
+      <h2><span class="icon">🤝</span> Respect Everyone</h2>
+      <p>Every person on dots is here to connect and vibe. Treat people the way you'd want to be treated at a real-world meetup.</p>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Harassment or bullying</strong> — targeting, intimidating, or repeatedly bothering someone who doesn't want to engage with you.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Hate speech</strong> — language or content that attacks someone based on their race, religion, gender, caste, sexuality, disability, or nationality.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Threats or intimidation</strong> — threatening violence, harm, or making someone fear for their safety in any way.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Discrimination</strong> — excluding or demeaning others based on who they are.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-yes">OK</span>
+        <span class="rule-text">Disagreeing respectfully, declining a vibe politely, or simply not engaging with someone you don't click with.</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">💬</span> Keep Chats Clean</h2>
+      <p>Chats and vibe conversations should feel like real conversations — not a place people dread opening.</p>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Unsolicited explicit content</strong> — sending sexual messages, images, or videos to someone without their clear consent.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Spam</strong> — sending repeated, irrelevant, or promotional messages to people or inside vibes.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Scamming or misleading people</strong> — using chats to deceive, manipulate, or extract money or personal information from others.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Impersonation</strong> — pretending to be someone else or creating a fake identity to mislead others.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-yes">OK</span>
+        <span class="rule-text">Planning meetups, sharing locations, sending photos from vibes, and having normal friendly conversations.</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">📍</span> Vibes Are Real — Keep Them Honest</h2>
+      <p>Vibes are the core of dots. They work because people trust them to be genuine.</p>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Fake vibes</strong> — creating vibes you have no intention of showing up to, or using vibes to lure people under false pretenses.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Commercial or promotional vibes</strong> — using vibes to sell products, promote services, or run advertising without authorisation from dots.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Misrepresenting a vibe</strong> — describing a vibe as something it isn't to get people to show up.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-yes">OK</span>
+        <span class="rule-text">Creating spontaneous, genuine vibes — even casual, small, or last-minute ones. That's exactly what dots is for.</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">🔒</span> Protect Privacy</h2>
+      <p>What happens in a vibe stays in a vibe. People share things in real-time with the expectation of trust.</p>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Sharing someone's personal information</strong> — posting or forwarding someone's location, phone number, address, or private details without their consent.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Screenshots of private chats</strong> — sharing private conversations outside the app without permission from everyone involved.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-no">NOT OK</span>
+        <span class="rule-text"><strong>Stalking or tracking</strong> — using location or vibe information to follow, monitor, or show up uninvited to someone's location.</span>
+      </div>
+      <div class="rule-row">
+        <span class="rule-tag tag-yes">OK</span>
+        <span class="rule-text">Sharing your own location and profile information as part of normal vibe participation.</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">🚫</span> Zero Tolerance</h2>
+      <p>Some things result in an immediate, permanent ban with no appeal. There are no second chances for these.</p>
+      <ul>
+        <li><strong>Child sexual abuse material (CSAM)</strong> — any sexual content involving minors will be reported to authorities immediately.</li>
+        <li><strong>Violence or threats of physical harm</strong> — coordinating, inciting, or threatening real-world violence against any person or group.</li>
+        <li><strong>Non-consensual intimate imagery</strong> — sharing or threatening to share intimate images of someone without their consent.</li>
+        <li><strong>Trafficking or exploitation</strong> — using dots to facilitate human trafficking, exploitation, or coercion of any kind.</li>
+        <li><strong>Terrorism or extremism</strong> — promoting, glorifying, or facilitating terrorist organisations or acts of mass violence.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">🛡️</span> Your Safety at Vibes</h2>
+      <p>dots facilitates real-world meetups. Here's how to keep yourself safe and what we expect from everyone.</p>
+      <ul>
+        <li>Meet in public places for your first vibe with new people.</li>
+        <li>Tell someone you trust where you're going.</li>
+        <li>Never pressure someone to share their precise location before they're comfortable.</li>
+        <li>If something feels off at a vibe — leave. Your safety comes first.</li>
+        <li>Report any behaviour at a vibe that made you feel unsafe, even after the fact.</li>
+      </ul>
+      <p style="margin-top:8px; font-size:13px; color:#888;">dots is not responsible for what happens at in-person meetups, but we take reports of unsafe behaviour very seriously and will act accordingly.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">⚖️</span> Enforcement</h2>
+      <p>We review reports and take action based on severity and context. Actions we may take include:</p>
+      <div class="enforce-box">
+        <p>⚠️ &nbsp;<strong>Warning</strong> — for first-time or minor violations.</p>
+        <p>🔇 &nbsp;<strong>Temporary suspension</strong> — restricted access to chats or vibe creation.</p>
+        <p>🚷 &nbsp;<strong>Permanent ban</strong> — for serious, repeated, or zero-tolerance violations.</p>
+        <p>🚔 &nbsp;<strong>Legal reporting</strong> — for content that requires us to involve law enforcement.</p>
+      </div>
+      <p style="margin-top:12px; font-size:13px; color:#888;">We may act on violations we discover ourselves, not only those that are reported. Context always matters — we don't remove content just because it's reported.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">🚩</span> How to Report</h2>
+      <p>If you see something that violates these guidelines — inside a chat, a vibe, or on someone's profile — report it directly in the app. Every report is reviewed by a real person.</p>
+      <p>You can also reach us directly at:</p>
+      <div class="contact-box">
+        <a href="mailto:dotspaceteam@gmail.com">dotspaceteam@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">🔄</span> Updates to These Guidelines</h2>
+      <p>As dots grows, these guidelines will evolve. We'll update the effective date when changes are made. Continued use of dots means you agree to the current version of these guidelines.</p>
+    </div>
+
+  </div>
+
+  <footer>© 2026 dotSpace. All rights reserved.</footer>
+
+  <div class="modal-overlay" id="helpModal" onclick="handleOverlayClick(event)">
+    <div class="modal-box">
+      <div class="modal-icon">💬</div>
+      <h3>Need Help?</h3>
+      <p>Have questions about these guidelines or want to report something? Reach out to us directly.</p>
+      <a class="modal-mail-btn" href="mailto:dotspaceteam@gmail.com">✉️ &nbsp;dotspaceteam@gmail.com</a>
+      <button class="modal-close" onclick="closeModal()">Dismiss</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal() { document.getElementById('helpModal').classList.add('active'); }
+    function closeModal() { document.getElementById('helpModal').classList.remove('active'); }
+    function handleOverlayClick(e) { if (e.target === document.getElementById('helpModal')) closeModal(); }
+  </script>
+
+</body>
+</html>
